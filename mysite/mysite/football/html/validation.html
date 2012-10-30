@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<style type="text/css">
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background: #f1f1f1;
+	padding: 0;
+	margin: 0;
+	color: #222;
+	font-size: 62.5%;
+
+}
+
+header {
+	width: 960px;
+	margin: 0px auto;
+	text-align: center;
+
+	display: block;
+
+}
+	#logo {
+		
+		padding-left: 40px;
+		padding-bottom: 60px;
+		padding-right: 0px;
+		padding-top: 60px;
+		background: #fff;
+        background-image:url(images/logo.jpg);
+		
+		-moz-border-radius: 0.8em;
+		-webkit-border-radius: 0.8em;
+	}
+	
+	nav {	
+	text-shadow: -5px -5px 3px #b3b3b3;	
+	font-weight: bold;	
+	width: 950px;
+	margin: 0px auto;
+	overflow: hidden;
+	font-size: 2.0em;
+	padding: 0px 0px 0px 10px;
+
+	display: block;
+}
+
+	nav ul {
+		padding: 0;
+		margin: 0;
+	}
+
+	nav ul li {
+		list-style: none;
+		float: left;
+		padding: 0px 40px 0px 35px;
+	}
+	nav a {	
+		color: #000 !important;
+		display: block;
+		padding: 20px;
+	}
+	nav a:hover {
+		color: #444;
+		background: #fff;
+		-moz-border-radius: 0.2em;
+		-webkit-border-radius: 0.2em;
+		
+	}	
+
+
+#content {
+	width: 960px;
+	height: 800px;
+
+	margin: 0px auto;
+
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;	
+
+	font-size: 1.4em;
+
+}
+
+#main-footer {
+		width: 960px;
+		margin: 0px auto;
+		padding: 15px;
+		font-size: 1.8em;
+		font-weight: bold;
+		text-align: center;
+	}
+	
+
+#main-content, .hfeed {
+	padding: 0px;
+	width: 940px;
+	background: #fff;
+
+	-moz-border-radius: 0.8em;
+	-webkit-border-radius: 0.8em;
+
+	display: block;
+
+}
+
+h2 {
+	font-size: 25px;
+	font-weight: bold;
+	text-align: left;
+}
+
+
+
+</style>
+
+<meta charset="utf-8" />
+
+<title>Commentaire ajoute</title>
+</head>
+<body>
+<div>
+	&nbsp;
+</div>
+
+
+<header>
+	<div id="logo">
+				</div>
+
+	<nav>
+		<ul>
+			<li><a href="{% url 'index' %}">Accueil</a></li>
+			
+			<ul>
+			<li><a href="{% url 'liste_equipes' 'Angleterre' %}">Angleterre</a></li>
+			<li><a href="{% url 'liste_equipes' 'Espagne' %}">Espagne</a></li>
+			<li><a href="{% url 'liste_equipes' 'France' %}">France</a></li>
+			<li><a href="{% url 'liste_equipes' 'Italie' %}">Italie</a></li>	
+		</ul>
+			
+		</ul>
+	</nav>
+</header>
+
+
+<div id="content">
+<section class="hfeed">
+			<article>
+			<br />
+			<center>
+Votre vote a ete pris en compte.<br />
+Vous pouvez maintenant revenir a la page de <a href="{% url 'detail_joueur' pays equipe prenom nom %}">{{prenom}} {{nom}}</a> ou de <a href="{% url 'liste_joueurs' pays equipe %}">son equipe</a>
+			</center>
+			<br /><hr /><br />
+		</article>
+
+
+
+		
+
+
+</div>
+
+<footer id="main-footer">
+	<section id="footer-1">
+		<center>Copyright Hedi&Sylvain &copy; 2012</center>
+	</section>
+	<section id="footer-2">
+		
+	</section>
+</footer>
+
+</body>
+</html>

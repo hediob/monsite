@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<style type="text/css">
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background: #f1f1f1;
+	padding: 0;
+	margin: 0;
+	color: #222;
+	font-size: 62.5%;
+
+}
+
+header {
+	width: 960px;
+	margin: 0px auto;
+	text-align: center;
+
+	display: block;
+
+}
+	#logo {
+		text-shadow: -5px -5px 2px #666666;
+		padding-left: 40px;
+		padding-bottom: 60px;
+		padding-right: 0px;
+		padding-top: 60px;
+		background: #fff;
+        background-image:url(images/logo.jpg);
+		
+		-moz-border-radius: 0.8em;
+		-webkit-border-radius: 0.8em;
+	}
+	
+	nav {	
+		
+	font-weight: bold;	
+	width: 950px;
+	margin: 0px auto;
+	overflow: hidden;
+	font-size: 2.0em;
+	padding: 0px 0px 0px 10px;
+
+	display: block;
+}
+
+	nav ul {
+		padding: 0;
+		margin: 0;
+	}
+
+	nav ul li {
+		list-style: none;
+		float: left;
+		padding: 0px 40px 0px 45px;
+	}
+	nav a {	
+		color: #000 !important;
+		display: block;
+		padding: 20px;
+	}
+	nav a:hover {
+		color: #444;
+		background: #fff;
+		-moz-border-radius: 0.2em;
+		-webkit-border-radius: 0.2em;
+		
+	}	
+
+
+#content {
+	width: 970px;
+	height: 750px;
+
+	margin: 0px auto;
+
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;	
+
+	font-size: 1.4em;
+
+}
+
+#main-footer {
+		width: 960px;
+		margin: 0px auto;
+		padding: 15px;
+		font-size: 1.8em;
+		font-weight: bold;
+		text-align: center;
+	}
+	
+
+#main-content, .hfeed {
+	padding: 15px;
+	width: 940px;
+	background: #fff;
+
+	-moz-border-radius: 0.8em;
+	-webkit-border-radius: 0.8em;
+
+	display: block;
+
+}
+
+h2 {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+}
+
+table
+{
+    border-collapse: collapse;
+}
+td, th
+{
+    border: 1px solid black;
+}
+
+
+
+</style>
+
+<meta charset="utf-8" />
+
+<title>Accueil</title>
+</head>
+<body>
+<div>
+	&nbsp;
+</div>
+
+
+<header>
+	<div id="logo">
+				</div>
+</header>
+
+
+<div id="content">
+	<section class="hfeed">
+			<article>
+				<h2><center>Football Rating.com</center></h2>
+			
+			<br /><hr /><br />
+		</article>
+
+
+	<article>
+				<h2>Bienvenue</h2>
+			<p>Veux tu devenir un journaliste sportif?  Grâce à cette application tu pourras noter tous les joueurs des championnats européens après leur match.</p> 
+			<p>Grâce à cette application tu pourras montrer ta colère ou ta satisfaction en laissant des critiques d'un joueurs.</p>
+			
+			<br /><hr /><br />
+		</article>
+	<article>
+				
+			<p>Pour noter un joueur, veuillez choisir un championnat en cliquant sur les boutons ci-dessous:</p> 
+		<nav>
+		<ul>
+			
+			<li><a href="{% url 'liste_equipes' 'Angleterre' %}">Angleterre</a></li>
+			<li><a href="{% url 'liste_equipes' 'Espagne' %}">Espagne</a></li>
+			<li><a href="{% url 'liste_equipes' 'France' %}">France</a></li>
+			<li><a href="{% url 'liste_equipes' 'Italie' %}">Italie</a></li>
+		</ul>
+	</nav>
+			
+			<br /><hr /><br />
+		</article>	
+
+	<article>
+				
+	<p>Meilleurs notes de la semaine:</p>
+	{% if best_commentaires %}
+	<table>
+		<tr>
+			<th>Joueur</th>
+			<th>Note</th>
+			<th>Commentaire</th>
+		</tr>
+		{% for commentaire in best_commentaires %}
+			{% if commentaire.was_published_recently %}
+				<tr>
+					<td>{{commentaire.joueur}}</td>
+					<td>{{commentaire.note}}</td>
+					<td>{{commentaire.commentaire}}</td>
+				</tr>
+			{% endif %}
+		{% endfor %}
+	 </table>
+	{% else %}
+		<p>Pas de commentaires recents.</p>
+	{% endif %}
+
+	<br />
+	
+	{% if worst_commentaires %}
+	<p>Pires notes de la semaine:</p>
+	<table>
+		<tr>
+			<th>Joueur</th>
+			<th>Note</th>
+			<th>Commentaire</th>
+		</tr>
+		{% for commentaire in worst_commentaires %}
+			<tr>
+				<td>{{commentaire.joueur}}</td>
+				<td>{{commentaire.note}}</td>
+				<td>{{commentaire.commentaire}}</td>
+			</tr>
+		{% endfor %}
+	 </table>
+	{% endif %}	
+			
+			<br /><hr /><br />
+		</article>			
+
+
+</div>
+
+<footer id="main-footer">
+	<section id="footer-1">
+		<center>Copyright Hedi&Sylvain &copy; 2012</center>
+	</section>
+	<section id="footer-2">
+		
+	</section>
+</footer>
+
+</body>
+</html>
